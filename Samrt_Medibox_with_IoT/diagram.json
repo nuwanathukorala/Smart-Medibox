@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard", "id": "bb1", "top": -79.8, "left": -246.8, "attrs": {} },
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 206.3, "left": 23.8, "attrs": {} },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -143.7,
+      "left": -111,
+      "attrs": { "temperature": "39.3" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -112.8,
+      "left": -209.4,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": -144.3,
+      "left": 215.3,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr2",
+      "top": -144.3,
+      "left": 128.9,
+      "rotate": 90,
+      "attrs": {}
+    },
+    { "type": "wokwi-servo", "id": "servo1", "top": -290, "left": -9.6, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "esp:3V3", "bb1:bn.50", "red", [ "v0", "h191.7" ] ],
+    [ "esp:GND.2", "bb1:bp.1", "green", [ "h0" ] ],
+    [ "bb1:bn.46", "ldr1:VCC", "red", [ "v0" ] ],
+    [ "ldr2:VCC", "bb1:bn.39", "red", [ "v0" ] ],
+    [ "ldr2:GND", "bb1:bp.38", "green", [ "v0" ] ],
+    [ "ldr1:GND", "bb1:bp.45", "green", [ "v0" ] ],
+    [ "bz1:1", "bb1:bp.3", "green", [ "v0" ] ],
+    [ "bz1:2", "esp:D12", "red", [ "v0" ] ],
+    [ "dht1:VCC", "bb1:bn.10", "red", [ "v0" ] ],
+    [ "dht1:GND", "bb1:bp.13", "green", [ "v0" ] ],
+    [ "dht1:SDA", "esp:D15", "#8f4814", [ "v201.6", "h240.1", "v173" ] ],
+    [ "esp:D32", "ldr2:AO", "blue", [ "h-38.4", "v-134.5" ] ],
+    [ "esp:D33", "ldr1:AO", "gold", [ "h-19.2", "v-268.8", "h278.4" ] ],
+    [ "servo1:GND", "bb1:bp.7", "green", [ "h0" ] ],
+    [ "servo1:V+", "bb1:bn.8", "red", [ "h0" ] ],
+    [ "esp:D4", "servo1:PWM", "black", [ "h-153.9", "v-547.3" ] ],
+    [ "dht1:VCC", "bb1:14t.a", "", [ "$bb" ] ],
+    [ "dht1:SDA", "bb1:15t.a", "", [ "$bb" ] ],
+    [ "dht1:NC", "bb1:16t.a", "", [ "$bb" ] ],
+    [ "dht1:GND", "bb1:17t.a", "", [ "$bb" ] ],
+    [ "bz1:1", "bb1:5t.a", "", [ "$bb" ] ],
+    [ "bz1:2", "bb1:6t.a", "", [ "$bb" ] ],
+    [ "ldr1:VCC", "bb1:57t.a", "", [ "$bb" ] ],
+    [ "ldr1:GND", "bb1:56t.a", "", [ "$bb" ] ],
+    [ "ldr1:DO", "bb1:55t.a", "", [ "$bb" ] ],
+    [ "ldr1:AO", "bb1:54t.a", "", [ "$bb" ] ],
+    [ "ldr2:VCC", "bb1:48t.a", "", [ "$bb" ] ],
+    [ "ldr2:GND", "bb1:47t.a", "", [ "$bb" ] ],
+    [ "ldr2:DO", "bb1:46t.a", "", [ "$bb" ] ],
+    [ "ldr2:AO", "bb1:45t.a", "", [ "$bb" ] ]
+  ],
+  "dependencies": {}
+}
